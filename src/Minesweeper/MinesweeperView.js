@@ -31,6 +31,8 @@ import digit8 from '../assets/digit8.png';
 import digit9 from '../assets/digit9.png';
 import digit_ from '../assets/digit-.png';
 
+const gridSize = '32'; //px
+
 const digits = [
   digit0,
   digit1,
@@ -229,7 +231,7 @@ function MineSweeperView({
             <div className="mine__drop-down__separator" />
             <div
               className="mine__drop-down__row"
-              onMouseUp={() => onReset('Beginner')}
+              onMouseUp={() => {onReset('Beginner'); setOpenOption('')}}
               onTouchStart={() => onReset('Beginner')}
             >
               <div className="mine__drop-down__check">
@@ -243,7 +245,7 @@ function MineSweeperView({
             </div>
             <div
               className="mine__drop-down__row"
-              onMouseUp={() => onReset('Intermediate')}
+              onMouseUp={() => {onReset('Intermediate'); setOpenOption('')}}
               onTouchStart={() => onReset('Intermediate')}
             >
               <div className="mine__drop-down__check">
@@ -257,7 +259,7 @@ function MineSweeperView({
             </div>
             <div
               className="mine__drop-down__row"
-              onMouseUp={() => onReset('Expert')}
+              onMouseUp={() => {onReset('Expert'); setOpenOption('')}}
               onTouchStart={() => onReset('Expert')}
             >
               <div className="mine__drop-down__check">
@@ -478,8 +480,8 @@ const Mine = () => (
 
 const CeilBackgroundCover = styled.div`
   position: absolute;
-  width: 16px;
-  height: 16px;
+  width: ${gridSize}px;
+  height: ${gridSize}px;
   border-left: rgb(245, 245, 245) solid 2px;
   border-top: rgb(245, 245, 245) solid 2px;
   border-right: rgb(128, 128, 128) solid 2px;
@@ -487,8 +489,8 @@ const CeilBackgroundCover = styled.div`
 `;
 const CeilBackgroundOpen = styled.div`
   position: absolute;
-  width: 16px;
-  height: 16px;
+  width: ${gridSize}px;
+  height: ${gridSize}px;
   border-left: rgb(128, 128, 128) solid 1px;
   border-top: rgb(128, 128, 128) solid 1px;
 `;
@@ -636,8 +638,8 @@ export default styled(MineSweeperView)`
   }
   .mine__content__inner {
     display: grid;
-    grid-template-columns: repeat(${({ columns }) => columns}, 16px);
-    grid-template-rows: repeat(${({ rows }) => rows}, 16px);
+    grid-template-columns: repeat(${({ columns }) => columns}, ${gridSize}px);
+    grid-template-rows: repeat(${({ rows }) => rows}, ${gridSize}px);
     border-top: rgb(128, 128, 128) solid 3px;
     border-left: rgb(128, 128, 128) solid 3px;
     border-right: rgb(245, 245, 245) solid 3px;
@@ -647,8 +649,8 @@ export default styled(MineSweeperView)`
     position: relative;
     img {
       position: absolute;
-      width: 16px;
-      height: 16px;
+      width: ${gridSize}px;
+      height: ${gridSize}px;
     }
   }
 `;
